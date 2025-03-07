@@ -43,15 +43,6 @@ class _HomeScreenState extends State<HomeScreen> {
               itemBuilder: (context, index) {
                 final character = characters[index];
                 return GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) =>
-                              DetailScreen(),
-                        ),
-                      );
-                    },
                     child: Card(
                         margin: const EdgeInsets.symmetric(
                             horizontal: 16, vertical: 8),
@@ -59,6 +50,16 @@ class _HomeScreenState extends State<HomeScreen> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(16)),
                         child: ListTile(
+                          onTap: () {
+                            print("Clicou no personagens: ${character.name}");
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                  DetailScreen(character),
+                              ),  
+                            );
+                          },
                           leading: CachedNetworkImage(
                             imageUrl: character.image,
                             width: 50,
